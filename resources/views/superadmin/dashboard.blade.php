@@ -158,7 +158,7 @@
             @endforeach
             </tbody>
         </table>
-        <div style="padding:14px 16px;">{{ $allUsers->links() }}</div>
+        @endif
     </div>
 </div>
 @endsection

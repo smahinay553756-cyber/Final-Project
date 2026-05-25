@@ -79,6 +79,5 @@
     </div>
     @endforeach
 </div>
-<div style="margin-top:18px;">{{ $medicines->withQueryString()->links() }}</div>
 @endif
 @endsection

@@ -23,7 +23,7 @@ class DashboardController extends Controller
                   ->orWhere('username', 'like', '%'.request('search').'%');
             });
         }
-        $allUsers = $userQuery->paginate(15)->withQueryString();
+        $allUsers = $userQuery->get();
 
         $filter     = request('chart', 'month');
         $totalSales = Order::where('status', '!=', 'cancelled')->sum('total_amount');
@@ -79,7 +79,7 @@ class DashboardController extends Controller
                   ->orWhere('username', 'like', '%'.request('search').'%');
             });
         }
-        $customers = $query->paginate(15)->withQueryString();
+        $customers = $query->get();
         return view('superadmin.customers.index', compact('customers'));
     }
 

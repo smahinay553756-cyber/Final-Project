@@ -25,7 +25,7 @@ class UserController extends Controller
         if ($request->role) {
             $query->where('role', $request->role);
         }
-        $users = $query->paginate(10)->withQueryString();
+        $users = $query->get();
         return view('admin.users.index', compact('pendingStaff', 'pendingRemovals', 'users'));
     }
 
@@ -39,7 +39,7 @@ class UserController extends Controller
                   ->orWhere('username', 'like', "%{$request->search}%");
             });
         }
-        $customers = $query->paginate(15)->withQueryString();
+        $customers = $query->get();
         return view('admin.customers.index', compact('customers'));
     }
 

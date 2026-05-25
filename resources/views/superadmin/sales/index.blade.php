@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="pharma-card">
-    <div style="padding:0;max-height:600px;overflow-y:auto;">
+    <div style="padding:0;">
         @if($orders->isEmpty())
             <div class="empty-state"><p>No orders yet.</p></div>
         @else

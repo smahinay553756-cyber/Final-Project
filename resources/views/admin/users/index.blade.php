@@ -139,7 +139,7 @@
             @endforeach
             </tbody>
         </table>
-        <div style="padding:14px 16px;">{{ $users->links() }}</div>
+        @endif
     </div>
 </div>
 

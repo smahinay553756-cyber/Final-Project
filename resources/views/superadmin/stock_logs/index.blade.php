@@ -90,7 +90,6 @@
             @endforeach
             </tbody>
         </table>
-        <div style="padding:14px 16px;">{{ $logs->links() }}</div>
         @endif
     </div>
 </div>

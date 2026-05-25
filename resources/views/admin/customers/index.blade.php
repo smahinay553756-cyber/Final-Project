@@ -20,7 +20,7 @@
 <div class="pharma-card">
     <div class="pharma-card-header">
         <span class="pharma-card-title">All Customers</span>
-        <span class="badge badge-info">{{ $customers->total() }} total</span>
+        <span class="badge badge-info">{{ $customers->count() }} total</span>
     </div>
     <div style="padding:12px 16px;border-bottom:1px solid var(--border);">
         <form method="GET" action="{{ route('admin.customers.index') }}" style="display:flex;gap:8px;">
@@ -68,7 +68,6 @@
             @endforeach
             </tbody>
         </table>
-        <div style="padding:14px 16px;">{{ $customers->links() }}</div>
         @endif
     </div>
 </div>

@@ -88,7 +88,6 @@
             @endforeach
             </tbody>
         </table>
-        <div style="padding:14px 16px;">{{ $orders->links() }}</div>
         @endif
     </div>
 </div>

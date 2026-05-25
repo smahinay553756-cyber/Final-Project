@@ -11,7 +11,7 @@ class StockLogController extends Controller
     public function index()
     {
         $pending = StockLog::with(['medicine', 'staff'])->where('status', 'pending')->latest()->get();
-        $logs    = StockLog::with(['medicine', 'staff', 'approver'])->whereIn('status', ['approved', 'rejected'])->latest()->paginate(20);
+        $logs    = StockLog::with(['medicine', 'staff', 'approver'])->whereIn('status', ['approved', 'rejected'])->latest()->get();
         return view('admin.stock_logs.index', compact('pending', 'logs'));
     }
 

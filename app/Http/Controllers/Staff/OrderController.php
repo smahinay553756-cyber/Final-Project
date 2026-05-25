@@ -24,7 +24,7 @@ class OrderController extends Controller
             $query->where('is_walkin', true);
         }
 
-        $orders = $query->paginate(10);
+        $orders = $query->get();
         return view('staff.orders.index', compact('orders', 'filter'));
     }
 

@@ -27,14 +27,14 @@ class OrderController extends Controller
             $query->where('category', $request->category);
         }
         return view('customer.catalog', [
-            'medicines'  => $query->paginate(12),
+            'medicines'  => $query->get(),
             'categories' => Medicine::distinct()->pluck('category'),
         ]);
     }
 
     public function index()
     {
-        $orders = Order::where('user_id', Auth::id())->with('items.medicine')->latest()->paginate(10);
+        $orders = Order::where('user_id', Auth::id())->with('items.medicine')->latest()->get();
         return view('customer.orders.index', compact('orders'));
     }
 
