@@ -12,7 +12,7 @@ class Medicine extends Model
         'batch_number', 'manufacture_date', 'expiry_date', 'stock_quantity',
         'reorder_level', 'unit_price', 'selling_price', 'storage_condition',
         'requires_prescription', 'description', 'side_effects',
-        'contraindications', 'status', 'supplied_by',
+        'contraindications', 'status',
     ];
 
     protected $casts = [
@@ -20,11 +20,6 @@ class Medicine extends Model
         'expiry_date' => 'date',
         'requires_prescription' => 'boolean',
     ];
-
-    public function supplier()
-    {
-        return $this->belongsTo(User::class, 'supplied_by');
-    }
 
     public function orderItems()
     {

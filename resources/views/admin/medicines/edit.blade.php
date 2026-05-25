@@ -125,15 +125,6 @@
                     <label class="form-label">Selling Price (&#8369;) <span style="color:var(--red)">*</span></label>
                     <input type="number" step="0.01" name="selling_price" class="form-control" value="{{ old('selling_price', $medicine->selling_price) }}" min="0" required>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Supplier</label>
-                    <select name="supplied_by" class="form-control">
-                        <option value="">None</option>
-                        @foreach($suppliers as $s)
-                            <option value="{{ $s->id }}" {{ old('supplied_by',$medicine->supplied_by)==$s->id?'selected':'' }}>{{ $s->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
 
             <div class="section-divider">Additional Details</div>

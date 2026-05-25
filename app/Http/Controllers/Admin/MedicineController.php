@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Medicine;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Medicine::with('supplier');
+        $query = Medicine::query();
         if ($request->search) {
             $query->where('name', 'like', "%{$request->search}%")
                   ->orWhere('generic_name', 'like', "%{$request->search}%")
@@ -32,7 +31,6 @@ class MedicineController extends Controller
     public function create()
     {
         return view('admin.medicines.create', [
-            'suppliers' => User::where('role', 'supplier')->get(),
         ]);
     }
 
@@ -61,7 +59,6 @@ class MedicineController extends Controller
             'side_effects'          => 'nullable|string',
             'contraindications'     => 'nullable|string',
             'status'                => 'required|in:active,inactive,discontinued',
-            'supplied_by'           => 'nullable|exists:users,id',
         ]);
         $data['requires_prescription'] = $request->boolean('requires_prescription');
         Medicine::create($data);
@@ -77,7 +74,6 @@ class MedicineController extends Controller
     {
         return view('admin.medicines.edit', [
             'medicine'  => $medicine,
-            'suppliers' => User::where('role', 'supplier')->get(),
         ]);
     }
 
@@ -106,7 +102,6 @@ class MedicineController extends Controller
             'side_effects'          => 'nullable|string',
             'contraindications'     => 'nullable|string',
             'status'                => 'required|in:active,inactive,discontinued',
-            'supplied_by'           => 'nullable|exists:users,id',
         ]);
         $data['requires_prescription'] = $request->boolean('requires_prescription');
         $medicine->update($data);

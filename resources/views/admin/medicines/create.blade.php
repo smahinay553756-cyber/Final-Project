@@ -143,15 +143,6 @@
                     <input type="number" step="0.01" name="selling_price" class="form-control @error('selling_price') is-invalid @enderror" value="{{ old('selling_price') }}" min="0" required>
                     @error('selling_price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Supplier</label>
-                    <select name="supplied_by" class="form-control">
-                        <option value="">None</option>
-                        @foreach($suppliers as $s)
-                            <option value="{{ $s->id }}" {{ old('supplied_by')==$s->id?'selected':'' }}>{{ $s->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
 
             <div class="section-divider">Additional Details</div>
