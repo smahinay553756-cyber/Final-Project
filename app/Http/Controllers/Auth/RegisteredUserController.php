@@ -57,7 +57,9 @@ class RegisteredUserController extends Controller
             return redirect()->route('login')->with('status', 'Your account is pending approval. You will be notified once approved.');
         }
 
-        Auth::login($user);
+        Auth::login($user, true);
+
+        $request->session()->regenerate();
 
         return redirect()->route('customer.dashboard');
     }
