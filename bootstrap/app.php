@@ -16,16 +16,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \App\Http\Middleware\RoleMiddleware::class,
         ]);
         $middleware->redirectGuestsTo('/login');
-        $middleware->redirectUsersTo(function ($request) {
-            $user = auth()->user();
-            if (!$user) return '/login';
-            return match($user->role) {
-                'superadmin' => '/superadmin/dashboard',
-                'admin'      => '/admin/dashboard',
-                'staff'      => '/staff/dashboard',
-                default      => '/customer/dashboard',
-            };
-        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
