@@ -17,7 +17,8 @@ class StockLogController extends Controller
 
     public function approve(StockLog $stockLog)
     {
-        $medicine = $stockLog->medicine;
+        $medicine     = $stockLog->medicine;
+        $stockBefore  = $medicine->stock_quantity;
 
         if ($stockLog->type === 'in') {
             $medicine->increment('stock_quantity', $stockLog->quantity);
@@ -31,11 +32,11 @@ class StockLogController extends Controller
         }
 
         $stockLog->update([
-            'status'      => 'approved',
-            'approved_by' => Auth::id(),
-            'approved_at' => now(),
-            'stock_before'=> $stockLog->type === 'in' ? $medicine->stock_quantity - $stockLog->quantity : $medicine->stock_quantity + $stockLog->quantity,
-            'stock_after' => $medicine->stock_quantity,
+            'status'       => 'approved',
+            'approved_by'  => Auth::id(),
+            'approved_at'  => now(),
+            'stock_before' => $stockBefore,
+            'stock_after'  => $medicine->fresh()->stock_quantity,
         ]);
 
         return back()->with('success', 'Stock request approved and inventory updated.');

@@ -113,9 +113,10 @@ class DashboardController extends Controller
 
     public function approveRemoval(UserRemovalRequest $removalRequest)
     {
+        $name = $removalRequest->targetUser->name ?? 'User';
         $removalRequest->targetUser->delete();
         $removalRequest->update(['status' => 'approved', 'reviewed_by' => Auth::id()]);
-        return back()->with('success', $removalRequest->targetUser->name ?? 'User' . ' has been removed.');
+        return back()->with('success', $name . ' has been removed.');
     }
 
     public function rejectRemoval(UserRemovalRequest $removalRequest)

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In — Pharmacy Management System</title>
-    <link rel="stylesheet" href="{{ asset('css/pharmacy.css') }}">
+    <link rel="stylesheet" href="/css/pharmacy.css">
     <style>
         input[type="password"]::-ms-reveal,
         input[type="password"]::-ms-clear { display:none; }
@@ -43,9 +43,10 @@
                 <input type="email" name="email"
                        class="form-control @error('email') is-invalid @enderror"
                        value="{{ old('email') }}"
-                       placeholder="Enter your email"
+                       placeholder="e.g. maria.customer@gmail.com"
                        autocomplete="off"
                        autofocus required>
+                <div style="font-size:11.5px;color:var(--muted);margin-top:4px;">Use your registered email (e.g. name.<strong>customer</strong>@gmail.com)</div>
                 @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account — Pharmacy Management System</title>
-    <link rel="stylesheet" href="{{ asset('css/pharmacy.css') }}">
+    <link rel="stylesheet" href="/css/pharmacy.css">
     <style>
         .role-radio-group { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:16px; }
         .role-radio-btn { position:relative; }

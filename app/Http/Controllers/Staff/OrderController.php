@@ -104,14 +104,25 @@ class OrderController extends Controller
 
     public function updateStatus(Order $order, string $status)
     {
+        if (!in_array($status, ['pending', 'confirmed', 'dispensed', 'cancelled'])) {
+            return back()->with('error', 'Invalid status.');
+        }
+
         $data = ['status' => $status];
-        if ($status === 'dispensed') {
+
+        if ($status === 'dispensed' && $order->status !== 'dispensed') {
+            foreach ($order->items as $item) {
+                if ($item->medicine->stock_quantity < $item->quantity) {
+                    return back()->with('error', 'Insufficient stock for ' . $item->medicine->name);
+                }
+            }
             $data['dispensed_by'] = Auth::id();
             $data['dispensed_at'] = now();
             foreach ($order->items as $item) {
                 $item->medicine->decrement('stock_quantity', $item->quantity);
             }
         }
+
         $order->update($data);
         return back()->with('success', 'Order status updated.');
     }
