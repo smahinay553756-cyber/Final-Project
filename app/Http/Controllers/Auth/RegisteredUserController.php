@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,8 +52,6 @@ class RegisteredUserController extends Controller
             'role'     => $role,
             'approved' => $approved,
         ]);
-
-        event(new Registered($user));
 
         if (!$approved) {
             return redirect()->route('login')->with('status', 'Your account is pending approval. You will be notified once approved.');
