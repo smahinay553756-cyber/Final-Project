@@ -663,10 +663,44 @@ body {
 
 /* ─── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 900px) {
-    .pharma-sidebar { width: 0; overflow: hidden; }
+    .pharma-sidebar {
+        width: 240px;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+    .pharma-sidebar.open { transform: translateX(0); }
     .pharma-main    { margin-left: 0; }
     .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
     .stats-grid     { grid-template-columns: 1fr 1fr; }
     .detail-grid    { grid-template-columns: 1fr; }
     .detail-item:nth-child(odd) { border-right: none; }
+    .pharma-content { padding: 16px; }
+    .pharma-topbar  { padding: 0 16px; }
+    .mobile-menu-btn { display: flex !important; }
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 99;
+    }
+    .sidebar-overlay.open { display: block; }
+    .pharma-table th, .pharma-table td { padding: 8px 10px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .login-card { padding: 24px 18px; }
+    .role-radio-group { grid-template-columns: 1fr !important; }
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--navy);
+    align-items: center;
+    justify-content: center;
 }

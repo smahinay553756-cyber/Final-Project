@@ -8,7 +8,8 @@
 </head>
 <body>
 <div class="pharma-wrapper">
-    <aside class="pharma-sidebar">
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+    <aside class="pharma-sidebar" id="pharma-sidebar">
         <div class="sidebar-brand">
             <a href="#" class="brand-logo">
                 <div class="sidebar-logo-mark">
@@ -47,9 +48,14 @@
 
     <div class="pharma-main">
         <header class="pharma-topbar">
-            <div>
-                <div class="topbar-title">@yield('page-title', 'Dashboard')</div>
-                <div class="topbar-subtitle">@yield('page-subtitle', 'PharmaCare Management System')</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="mobile-menu-btn" onclick="openSidebar()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <div>
+                    <div class="topbar-title">@yield('page-title', 'Dashboard')</div>
+                    <div class="topbar-subtitle">@yield('page-subtitle', 'PharmaCare Management System')</div>
+                </div>
             </div>
             <div class="topbar-actions">
                 @yield('topbar-actions')
@@ -78,5 +84,15 @@
     </div>
 </div>
     @yield('scripts')
+<script>
+function openSidebar() {
+    document.getElementById('pharma-sidebar').classList.add('open');
+    document.getElementById('sidebar-overlay').classList.add('open');
+}
+function closeSidebar() {
+    document.getElementById('pharma-sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('open');
+}
+</script>
 </body>
 </html>
