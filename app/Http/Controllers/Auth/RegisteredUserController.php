@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             return back()->withErrors(['base_email' => 'An account with this email and role already exists.'])->withInput();
         }
 
-        $approved = $role === 'customer';
+        $approved = $role === 'customer' ? 1 : 0;
 
         $user = User::create([
             'name'     => trim($request->first_name . ' ' . $request->last_name),
