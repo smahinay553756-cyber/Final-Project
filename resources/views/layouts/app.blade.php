@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Pharmacy') — Pharmacy Management System</title>
-    <link rel="stylesheet" href="{{ asset('css/pharmacy.css') }}">
+    <link rel="stylesheet" href="/css/pharmacy.css">
 </head>
 <body>
 <div class="pharma-wrapper">
