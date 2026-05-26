@@ -115,6 +115,6 @@ class OrderController extends Controller
         abort_if($order->user_id !== Auth::id(), 403);
         abort_if($order->status !== 'dispensed', 403, 'Receipt is only available for dispensed orders.');
         $order->load(['user', 'items.medicine', 'dispenser']);
-        return view('staff.orders.receipt', compact('order'));
+return view('customer.orders.receipt', compact('order'));
     }
 }

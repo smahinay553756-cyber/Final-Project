@@ -145,6 +145,7 @@
     <button class="print-btn" onclick="window.print()">Print Receipt</button>
     <a class="back-btn" id="backBtn" style="display:none; text-align:center; text-decoration:none;" href="{{ route('staff.orders.index') }}">Back to Orders</a>
 
+
 <script>
     window.onafterprint = function() {
         document.getElementById('backBtn').style.display = 'block';
